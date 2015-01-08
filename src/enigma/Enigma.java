@@ -14,29 +14,28 @@ public class Enigma {
 
     public static void main(String[] args) {
 
-        StringBuilder sb = new StringBuilder();
-
-        String tekst = "ABCDFGZ";
-        int offset = 1;
-        int tmp;
-        char znak;
-        
-// czy w alfabecie ---------------------------        
-        if (!tekst.matches("^[ -Z]*$")) {
+        String tekst = "ABDFSDFYZ";
+        String wynik,wynik1;
+       Cypher c = new Cypher();
+   
+       //czy w alfabecie ---------------------------        
+       if (!tekst.matches("^["+c.getAlphabet()+"]*$")) {
             throw new IllegalArgumentException("Poza alfabetem");
         }
-// zmiana wg offseta -------------------------
-        for (int j = 0; j < tekst.length(); j++) {
-            
-            znak = tekst.charAt(j);
-            //znak +=offset;
-            tmp = (int)znak-32;
-            tmp = ((tmp+offset) % 59);
-            tmp+=32;
-            znak = (char)tmp;
-            sb.append((char)znak);
-        }
-        System.out.println(sb.toString());
+      // ------------------------------------------
+       
+       
+      wynik = c.encrypt(tekst);
+      System.out.println(wynik);
+      wynik1 = c.decrypt(wynik);
+      System.out.println(wynik1);
+        
+ 
+        
+
+        
+        
+        
     }
 }
 
